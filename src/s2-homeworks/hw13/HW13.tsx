@@ -34,7 +34,7 @@ const HW13 = () => {
         setCode('Код 200!')
         setImage(success200)
         setText('...всё ок)')
-        setInfo('success')
+        setInfo('код 200 - обычно означает что скорее всего всё ок)')
       })
       .catch((e) => {
         x === false && setCode('500')
@@ -42,11 +42,9 @@ const HW13 = () => {
         x === false && setInfo('ошибка 500 - обычно означает что что-то сломалось на сервере, например база данных)')
         x === undefined && setText('Ты не отправил success в body вообще!')
         x === undefined && setCode('400')
+        x === undefined && setInfo('ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!')
         x === null && setInfo('Error')
         setImage(error400)
-      })
-      .finally(() => {
-        x !== null && setInfo('...')
       })
   }
 
