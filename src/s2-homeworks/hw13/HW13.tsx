@@ -41,6 +41,9 @@ const HW13 = () => {
         x === null && setInfo('Error')
         setImage(error400)
       })
+      .finally(() => {
+        x !== null && setInfo('...')
+      })
   }
 
   return (
