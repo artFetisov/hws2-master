@@ -33,12 +33,13 @@ const HW13 = () => {
       .then((res) => {
         setCode('Код 200!')
         setImage(success200)
-        setInfo('...success')
+        setText('...все ок')
       })
       .catch((e) => {
-        setCode('Код 400')
+        x === false && setCode('500')
+        x === undefined && setText('Ты не отправил success в body вообще')
+        x === null && setInfo('Error')
         setImage(error400)
-        setInfo('...error')
       })
   }
 
@@ -57,12 +58,7 @@ const HW13 = () => {
           <SuperButton id={'hw13-send-undefined'} onClick={send(undefined)} xType={'secondary'} disabled={info === '...loading'}>
             Send undefined
           </SuperButton>
-          <SuperButton
-            id={'hw13-send-null'}
-            onClick={send(null)} // имитация запроса на не корректный адрес
-            xType={'secondary'}
-            disabled={info === '...loading'}
-          >
+          <SuperButton id={'hw13-send-null'} onClick={send(null)} xType={'secondary'} disabled={info === '...loading'}>
             Send null
           </SuperButton>
         </div>
