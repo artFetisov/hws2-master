@@ -6,9 +6,6 @@ import SuperPagination from './common/c9-SuperPagination/SuperPagination'
 import { useSearchParams } from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
 
-//  * 2 - дописать SuperSort
-//  * 3 - проверить pureChange тестами
-
 type TechType = {
   id: number
   tech: string
@@ -41,6 +38,8 @@ const HW15 = () => {
     getTechs(params).then((res) => {
       setTechs(res?.data?.techs as TechType[])
       setTotalCount(res?.data?.totalCount as number)
+      const newParams = new URLSearchParams({ page: String(params.page), count: String(params.count) })
+      setSearchParams(newParams)
     })
   }
 
