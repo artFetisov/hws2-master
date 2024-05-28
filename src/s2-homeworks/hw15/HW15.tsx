@@ -34,6 +34,7 @@ const HW15 = () => {
   const [techs, setTechs] = useState<TechType[]>([])
 
   const sendQuery = (params: ParamsType) => {
+    console.log(params)
     setLoading(true)
     getTechs(params).then((res) => {
       setTechs(res?.data?.techs as TechType[])
@@ -58,9 +59,11 @@ const HW15 = () => {
 
   useEffect(() => {
     const params = Object.fromEntries(searchParams)
-    sendQuery({ page: +params.page, count: +params.count, sort: sort })
+    console.log(params)
     setPage(+params.page || 1)
     setCount(+params.count || 4)
+
+    sendQuery({ page: +params.page || page, count: +params.count || count, sort: sort })
   }, [])
 
   const mappedTechs = techs.map((t) => (
