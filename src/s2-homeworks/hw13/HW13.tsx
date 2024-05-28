@@ -33,12 +33,14 @@ const HW13 = () => {
       .then((res) => {
         setCode('Код 200!')
         setImage(success200)
-        setText('...все ок')
+        setText('...всё ок')
         setInfo('success')
       })
       .catch((e) => {
         x === false && setCode('500')
+        x === false && setText('эмитация ошибки на сервере')
         x === undefined && setText('Ты не отправил success в body вообще')
+        x === undefined && setCode('400')
         x === null && setInfo('Error')
         setImage(error400)
       })
